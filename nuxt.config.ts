@@ -1,19 +1,16 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: ["~/main.css"],
-  modules: ['@nuxt/ui', '@nuxt/icon', '@nuxtjs/google-fonts'],
+  modules: [
+    '@nuxt/ui', 
+    '@nuxt/icon', 
+    '@nuxtjs/google-fonts'],
 
-  app: {
-    head: {
-      link: [
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
-          //href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap' IF YOU WANT TO ADD ANOTHER FONT
-        }
-      ]
-    }
-  }
+  googleFonts: {
+    families: {
+      Manrope: [300, 400, 500, 600, 700, 800],
+      Inter: [300, 400, 500, 600, 700, 800],
+    },
+  },
 })
