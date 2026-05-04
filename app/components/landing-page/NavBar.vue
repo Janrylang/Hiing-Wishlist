@@ -17,15 +17,17 @@ async function scrollTo(id: string) {
 
 <template>
   <UHeader
-    class="py-8 sm:py-8 md:py-12 lg:py-14"
+    class="bg-[#F9F7F3] py-8 sm:py-8 md:py-12 lg:py-14"
     :ui="{
       toggle: 'flex md:hidden'
   }">
     <template #title>
-      <!-- <img src="/logo/Title_Logo_NoBG.png" alt="Logo" class="logo h-40 w-60 pt-4" /> -->
+      <div class="flex items-center gap-1">
+      <img src="/logo/Hiling-NoBG.png" alt="Logo" class="logo h-7 w-7 md:h-8 md:w-8 lg:h-10 lg:w-10" />
         <div>
-          <span class="font-semibold text-gray-800 font-montserrat"> <span class="text-[#2BD4BD]">Laba</span>Hub</span>
+           <span class="text-[#D38C22] text-lg font-extrabold font-manrope md:text-2xl lg:text-3xl"> Hiling </span>
         </div>
+      </div>
     </template>
 
     <!--#body is for mobile view, when the hamburger icon is clicked this menu will be displayed-->
@@ -49,19 +51,19 @@ async function scrollTo(id: string) {
       <div class="hidden md:flex items-center gap-1.5 md:gap-3 lg:gap-5">
         <div>
           <UButton
-            class="text-[#787878] hover:text-[#2BD4BD] active:text-[#24C5AF] font-normal text-xs sm:text-sm md:text-base lg:text-lg"
-            variant="link"
-            @click="scrollTo('pricing')">
+            class="text-[#787878] hover:text-[#D38C22] active:text-[#92621a] hover:-translate-y-1 transition-all duration-300 font-medium font-inter text-xs sm:text-sm md:text-base lg:text-lg"
+            variant="link">
               Login
           </UButton>
         </div>
 
         <div>
           <UButton 
-            class="bg-[#2BD4BD] hover:bg-[#25CCB6] active:bg-[#24C5AF] font-normal tracking-wide" 
+            trailing-icon="i-solar-arrow-right-linear"
+            class="bg-[#1E1A17] hover:bg-[#313131] active:bg-[#1E1A17] hover:text-[#D38C22] hover:-translate-y-1 hover:shadow-xl transition-all duration-300 text-white rounded-4xl font-medium font-inter tracking-wide" 
             :ui="{
-              base: 'px-5 py-0.5 text-xs sm:px-3.5 sm:py-1 sm:text-sm md:px-4.5 md:py-1.5 md:text-sm lg:text-lg lg:px-4.5 lg:py-1.5'}">
-              Make a list
+              base: 'px-5 py-0.5 text-xs md:px-4.5 md:py-2.5 md:text-sm lg:text-lg lg:px-4.5 lg:py-2.5'}">
+              Get Started
           </UButton>
         </div>
       </div>
