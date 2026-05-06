@@ -13,17 +13,20 @@ const { elementRef: headingProcessRef, isVisible: headingProcessVisible } = useS
 
   <section class="pt-8 pb-3 md:pt-12 mb:pb-12 lg:pt-4 lg:pb-16 bg-[#FBF6F0] overflow-hidden">
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 items-center px-6 lg:px-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-center px-6 lg:px-24">
 
       <!--Left Column-->
-      <div class="flex flex-col justify-start lg:ml-16">
-
+      <div class="flex flex-col justify-start md:ml-5 lg:ml-16">
+      <ClientOnly>
         <div
-          class="flex justify-center items-center text-center md:justify-start lg:justify-start bg-[#fff0db] rounded-3xl w-fit mt-1 px-6 py-1.5 md:py-2 lg:mt-5 mx-auto md:mx-0">
+          ref="badgeRef"
+          class="flex justify-center items-center text-center md:justify-start lg:justify-start bg-[#fff0db] rounded-3xl w-fit mt-1 px-6 py-1.5 md:py-1.5 lg:py-2 lg:mt-5 mx-auto md:mx-0 transition-all duration-200 ease-out"
+          :class="badgeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
           <UIcon name="i-system-uicons-gift" class="size-4.5 lg:size-6 mr-2 text-[#FE9A00]" />
           <span class="font-manrope text-xs lg:text-sm tracking-wide text-[#D38C22]">The easiest way to give and receive
             gifts</span>
         </div>
+      </ClientOnly>
 
         <!--Hero Header-->
         <ClientOnly>
@@ -43,7 +46,7 @@ const { elementRef: headingProcessRef, isVisible: headingProcessVisible } = useS
         <!--Hero Sub-Header-->
         <ClientOnly>
           <div ref="subHeadingRef"
-            class="flex justify-center items-center text-center text-sm pt-4 md:justify-start md:text-start md:text-base md:pt-4.5 lg:text-xl lg:pt-8 transition-all duration-450 ease-out"
+            class="flex justify-center items-center text-center text-sm pt-4 md:justify-start md:text-start md:text-sm md:pt-4.5 lg:text-xl lg:pt-8 lg:pr-0 transition-all duration-450 ease-out"
             :class="subHeadingVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-30'">
             <span class="font-normal font-inter text-[#3E3E3E]">
               Create your wishlist and let others give you the perfect gift picked by you, for you.
@@ -54,13 +57,16 @@ const { elementRef: headingProcessRef, isVisible: headingProcessVisible } = useS
         <!--Hero Header Buttons-->
         <ClientOnly>
           <div ref="headingButtonRef"
-            class="flex flex-col md:flex-row md:justify-start lg:flex-row lg:justify-start items-center gap-y-4 w-full md:w-auto lg:gap-x-12 md:gap-x-8 text-center font-inter font-medium pt-6 mb-5 md:pt-10 lg:pt-12 transition-all duration-400 ease-out"
+            class="flex flex-col md:flex-row md:justify-start lg:flex-row lg:justify-start items-center gap-y-4 w-full md:w-auto lg:gap-x-12 md:gap-x-6 text-center font-inter font-medium pt-6 mb-5 md:pt-10 lg:pt-12 transition-all duration-400 ease-out"
             :class="headingButtonVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'">
             <div>
               <UButton
                 class="bg-[#FE9A00] hover:bg-[#EF9100] active:bg-[#DD8600] text-white font-normal tracking-wide cursor-pointer transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#FE9A00]/50 rounded-4xl md:rounded-5xl lg:rounded-6xl"
-                leading-icon="i-ph-list-star" trailing-icon="i-lucide-arrow-right" block :ui="{
-                  base: 'px-4.5 py-2.5 text-xs md:px-4.5 md:py-3.5 md:text-base lg:text-lg lg:px-7 lg:py-4.5',
+                leading-icon="i-ph-list-star" 
+                trailing-icon="i-lucide-arrow-right" 
+                block 
+                :ui="{
+                  base: 'px-4.5 py-2.5 text-xs md:px-4.5 md:py-2 md:text-xs lg:text-lg lg:px-7 lg:py-4.5',
                   leadingIcon: 'size-4 md:size-5 lg:size-7',
                   trailingIcon: 'size-4 md:size-5 lg:size-7',
                 }">
@@ -70,9 +76,8 @@ const { elementRef: headingProcessRef, isVisible: headingProcessVisible } = useS
             <div>
               <UButton
                 class="bg-[#FFFFFF] hover:bg-[#f1f1f1] active:bg-[#eaeaea] text-[#1E1A17] border-2 border-[#dcdcdc] font-normal tracking-wide cursor-pointer transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#EF9100]/50 rounded-4xl md:rounded-5xl lg:rounded-6xl"
-                leading-icon="i-ic-twotone-people" 
-                :ui="{
-                  base: 'px-3.5 py-1.5 text-xs md:px-4.5 md:py-2 md:text-base lg:text-lg lg:px-5.5 lg:py-3'
+                leading-icon="i-ic-twotone-people" :ui="{
+                  base: 'px-3.5 py-1.5 text-xs md:px-3.5 md:py-2 md:text-xs lg:text-lg lg:px-5.5 lg:py-3'
                 }">
                 Group Gifting
               </UButton>
@@ -83,9 +88,9 @@ const { elementRef: headingProcessRef, isVisible: headingProcessVisible } = useS
       <!--End Left Column-->
 
       <!--Right Column - Image-->
-      <div class="hidden lg:flex justify-end items-center mr-16">
+      <div class="hidden md:flex justify-end items-start pt-8 md:mr-5 lg:mr-16">
         <img src="/landing-page/landing-image.png" alt="Hero Image"
-          class="rounded-3xl w-full max-w-lg h-100 object-cover shadow-xl" />
+          class="rounded-2xl lg:rounded-3xl w-full max-w-xs lg:max-w-lg md:h-65 lg:h-100 object-cover shadow-xl" />
       </div>
 
     </div>
@@ -93,7 +98,8 @@ const { elementRef: headingProcessRef, isVisible: headingProcessVisible } = useS
     <div>
       <!--Promotion-->
       <ClientOnly>
-        <div ref="promotionRef" class="flex justify-center pt-6 mb-5 md:mb-7 lg:mb-10 md:pt-10 lg:pt-20 transition-all duration-400 ease-out"
+        <div ref="promotionRef"
+          class="flex justify-center pt-6 mb-5 md:mb-7 lg:mb-10 md:pt-10 lg:pt-14 transition-all duration-400 ease-out"
           :class="promotionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'">
 
           <div class="flex flex-col md:flex-row items-start md:items-center gap-y-4 md:gap-x-10 lg:gap-x-20">
@@ -103,8 +109,8 @@ const { elementRef: headingProcessRef, isVisible: headingProcessVisible } = useS
                 <UIcon name="i-system-uicons-gift" class="size-5 text-[#FE9A00]" />
               </div>
               <div class="flex flex-col">
-                <span class="text-xs md:text-sm font-semibold text-[#1E1A17]">Free to use</span>
-                <span class="text-[10px] md:text-xs text-[#8a8a8a]">Just make an account and that's it</span>
+                <span class="text-xs lg:text-sm font-semibold text-[#1E1A17]">Free to use</span>
+                <span class="text-[10px] lg:text-sm text-[#8a8a8a]">Just make an account and that's it</span>
               </div>
             </div>
 
@@ -113,8 +119,8 @@ const { elementRef: headingProcessRef, isVisible: headingProcessVisible } = useS
                 <UIcon name="i-ph-credit-card" class="size-5 text-[#FE9A00]" />
               </div>
               <div class="flex flex-col">
-                <span class="text-xs md:text-sm font-semibold text-[#1E1A17]">No credit card required</span>
-                <span class="text-[10px] md:text-xs text-[#8a8a8a]">We don't do that here</span>
+                <span class="text-xs lg:text-sm font-semibold text-[#1E1A17]">No credit card required</span>
+                <span class="text-[10px] lg:text-sm text-[#8a8a8a]">We don't do that here</span>
               </div>
             </div>
 
@@ -123,8 +129,8 @@ const { elementRef: headingProcessRef, isVisible: headingProcessVisible } = useS
                 <UIcon name="i-formkit-people" class="size-5 text-[#FE9A00]" />
               </div>
               <div class="flex flex-col">
-                <span class="text-xs md:text-sm font-semibold text-[#1E1A17]">Perfect for groups</span>
-                <span class="text-[10px] md:text-xs text-[#8a8a8a]">Celebrate together</span>
+                <span class="text-xs lg:text-sm font-semibold text-[#1E1A17]">Perfect for groups</span>
+                <span class="text-[10px] lg:text-sm text-[#8a8a8a]">Celebrate together</span>
               </div>
             </div>
 
